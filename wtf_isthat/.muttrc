@@ -1,0 +1,141 @@
+# Mail Folder
+set folder = ~/Mail              	# Directory that contains all mail files (mailboxes)
+set spoolfile = +inbox           	# Default spoolfile
+set mbox = +archive/mbox         	# Where mail is appended to from spoolfile
+set mbox_type = mbox             	# Type of mail files
+set postponed = +log/postponed		# Where to save postponed mail
+set copy = yes                   	# Save copies of outgoing mail?
+set record = +archive/outbox     	# Where to save copies of outgoing mail 
+
+# Mailboxes
+mailboxes = +inbox
+
+# lists debian-user debian-news linux-kernel
+#subscribe gnome-devel-list gnome-list gnome-doc-list 
+
+set sort=threads
+folder-hook . set sort=threads
+folder-hook +inbox set sort=threads
+folder-hook +archive/outbox set sort=reverse-date
+
+# Address book
+set query_command="lbdbq '%s'"
+#set query_command="abook --mutt-query '%s'"
+#macro pager A |'abook --add-email'\n
+
+# View/Edit Options
+
+auto_view text/html	#if there is only html dump that
+alternative_order text/plain text/html	# this helps with multipart messages
+
+unset auto_tag
+unset confirmappend     # Don't ask me if I want to save a message
+unset mark_old          # Don't mark unread messages "old"
+unset collapse_unread   # If a thread has an unread msg, don't collapse
+set pager_context=1
+
+set fast_reply
+set edit_headers
+set include 
+set abort_unmodified = ask-yes 
+set move = no
+set quote_regexp = "^( {0,4}[>|:#]| {0,4}[a-z0-9]+[>|]+)+"
+set editor = "/usr/bin/vim +10"
+set ispell = "aspell -e -c"
+set forward_format="Fwd: %s"
+
+# forward a message including attachments
+#set mime_forward=yes
+#set mime_forward_rest=yes
+
+# Language options
+set strict_mime = no
+charset-hook x-gbk gbk
+charset-hook gb2312 gbk
+charset-hook GB2312 gbk
+set assumed_charset = "gbk:utf-8"
+#  set file_charset = "us-ascii:gbk:utf-8"
+#  set send_charset = "us-ascii:gbk:utf-8"
+set rfc2047_parameters = yes
+
+# Aliases (address book)
+#set alias_file = ~/.mutt-aliases
+#source ~/.mutt-aliases
+#set reverse_alias       # Show real name instead of e-mail address in index
+#set sort_alias = alias  # Sort aliases by alias name not email address
+
+# anyone I reply to is automatically added to my address book
+macro index r "<create-alias><enter><enter><enter><enter><enter><reply>"
+#  set alias_file = ~/.mutt/contacts
+
+# delete without comfirmation
+set delete = yes
+
+## ======================================================================
+## Format Strings:
+## ======================================================================
+
+set index_format = "%4C %Z %{%b %d} %-15.15F (%?l?%4l&%4c?) %s"
+
+# Prune the headers!
+ignore *
+unignore From:
+unignore To:
+unignore Subject:
+unignore Date:
+unignore CC:
+unignore user-agent x-mailer
+hdr_order Subject: From: To: Cc: user-agent x-mailer Date:
+
+# Key bindings
+bind    generic <home>  first-entry
+bind    generic <end>   last-entry
+bind    pager   <up>    previous-line
+bind    pager   <down>  next-line
+bind    pager   <left>  previous-entry
+bind    pager   <right> next-entry
+bind    pager   <home>  top
+bind    pager   <end>   bottom
+
+
+# Colors
+color normal     white         default
+color attachment brightyellow  default
+color hdrdefault cyan          default
+color indicator  default       cyan
+color markers    brightred     default
+color status     brightgreen   blue
+color tilde      blue          default
+color tree       red           default
+color signature  cyan          default
+
+color quoted           blue             default  
+color quoted1          magenta          default
+color quoted2          red              default
+color quoted3          green            default
+color quoted4          cyan             default
+color quoted5          blue             default
+color quoted6          magenta          default
+color quoted7          red              default
+
+# spamassassin integration
+# spamassassin report and classify as spam
+macro index S "|/usr/bin/spamassassin -r"
+# spamassassin classify as ham
+macro index H "|/usr/bin/sa-learn --ham  --no-sync"
+# rebuild the spamassassin bayes filter db
+macro index R "!/usr/bin/sa-learn --sync"
+
+# folder browser
+macro pager c '<change-folder>?<toggle-mailboxes>'
+macro index c '<change-folder>?<toggle-mailboxes>'
+
+set sort_browser = reverse-date
+set maildir_mtime = yes
+
+source 'cd ~/Mail ; for box in *-* ; do echo mailboxes =/$box ; done |'
+
+source ~/.mutt/personal.muttrc
+source ~/.mutt/color_header.muttrc
+source ~/.mutt/color_body.muttrc
+source ~/.mutt/color_index.muttrc

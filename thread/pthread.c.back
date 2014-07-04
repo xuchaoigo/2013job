@@ -1,0 +1,114 @@
+#include<stdio.h>
+#include<pthread.h>
+#include<string.h>
+#include<sys/types.h>
+#include<unistd.h>
+#include<sys/msg.h>
+#include<string.h>
+
+pthread_t ntid;
+
+int msg_handle = -1;
+
+typedef struct
+{
+	int msg_type;
+	int arg_num;
+	char arg[128];
+} msg;
+
+void printids(const char *s){
+	pid_t pid;
+	pthread_t tid;
+
+	pid = getpid();
+	tid = pthread_self();
+	printf("%s pid %u tid %u (0x%x)\n",s,(unsigned int)pid,(unsigned int)tid,(unsigned 
+				int)tid);
+}
+
+void *thread1(void *arg){
+	printids("new thread:");
+	
+	sleep(2);
+	msg *p_msg_main;
+	//rcv msg
+	if (msgrcv(msg_handle, p_msg_main, sizeof(msg), 0, 0) == -1)
+	{
+		printf("iChannel msg queue recv failed\n");
+		return -1;
+	}
+printf("main:%d,%d,%s\n",p_msg_main->msg_type,p_msg_main->arg_num,p_msg_main->arg);
+	
+	
+#if 0	
+	
+	msg *p_msg;
+
+	p_msg->msg_type = 1;
+	p_msg->arg_num = 3;
+        strcpy(p_msg->arg,"msg from thread1");
+	printf("thread1:%d,%d,%s\n", p_msg->msg_type,p_msg->arg_num  ,p_msg->arg);
+
+	
+	   printf("child:msg send.\n");
+	   if (msgsnd(msg_handle, p_msg, sizeof(msg), IPC_NOWAIT) == -1)  //not block
+	   {
+	   printf("iChannel msg queue send failed\n");
+	   return -1;
+	   }
+#endif
+	return ((void *)0);
+}
+
+
+int main(){
+	int err;
+
+	if ((msg_handle = msgget(100, IPC_CREAT | 0666)) == -1)
+	{
+		printf("create msg queue failed\n");
+		return -1;
+	}
+      /*
+	err = pthread_create(&ntid,NULL,thread1,NULL);
+	if(err != 0){
+		printf("can't create thread: %s\n",strerror(err));
+		return 1;
+	}
+	printids("main thread:");
+	sleep(1);
+*/
+
+	msg e_msg;
+	msg *p_msg = &e_msg;
+	//p_msg=&e_msg;
+	
+	p_msg->msg_type = 1;
+	
+	p_msg->arg_num = 3;
+        
+	getchar();
+	strcpy(p_msg->arg,"msg from thread1");
+	printf("thread1:%d,%d,%s\n", p_msg->msg_type,p_msg->arg_num  ,p_msg->arg);
+
+	
+	   printf("child:msg send.\n");
+	   if (msgsnd(msg_handle, p_msg, sizeof(msg), IPC_NOWAIT) == -1)  //not block
+	   {
+	   printf("iChannel msg queue send failed\n");
+	   return -1;
+	   }
+#if 0
+	msg *p_msg_main;
+	//rcv msg
+	if (msgrcv(msg_handle, p_msg_main, sizeof(msg), 0, IPC_NOWAIT) == -1)
+	{
+		printf("iChannel msg queue recv failed\n");
+		return -1;
+	}
+printf("main:%d,%d,%s\n",p_msg_main->msg_type,p_msg_main->arg_num,p_msg_main->arg);
+#endif
+	return 0;
+}
+

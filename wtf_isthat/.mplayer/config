@@ -1,0 +1,31 @@
+# Write your default config options here!
+
+# video out
+vo = xv
+
+# audio out
+ao = alsa
+mixer-channel = Master
+
+# subtitle options
+unicode = true
+subcp = gbk
+sub-fuzziness = 1
+# font select
+fontconfig = yes
+font = "serif"
+font = "FZCaiYun\-M09"
+font = "FZCuQian\-M17"
+font = "FZHuPo\-M04"
+# font effects
+spuaa = 4
+spugauss = 0.5
+subfont-outline = 2
+subfont-blur = 0
+# osd size
+subfont-text-scale = 3
+subwidth = 90
+
+# misc options
+ontop = yes
+cache = 4096

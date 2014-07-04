@@ -1,0 +1,154 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
+char* clockwise(int size) {
+	char **a;	
+	int nc=size/2;           /*circle number*/
+	int i,j,k,v;
+	int x,y;
+
+	a = (char **)malloc(size*sizeof(char));
+	for(i=0;i<size;i++)
+	{
+		a[i]=(char *)malloc(size*sizeof(char));
+	}
+
+	for(i=0; i<size; i++)
+	{
+		for(j=0; j< size; j++)
+		{
+			a[i][j]=0;
+		}
+	}
+
+	x=size/2;
+	y=size/2;
+	v=1;
+	a[x][y]= v++;
+	y++;
+	a[4][4]=1;
+	/*for(i=0; i<size; i++)
+	{
+		for(j=0; j< size; j++)
+			printf("%d*", *(*((char **)a+i)+j));
+		printf("\n");
+	
+	}
+	getchar();
+	*/
+	for(i=2;i<nc+2;i++)
+	{
+		printf("nc=%d\n",i);
+		printf("######## a[4][4]=%d\n", a[4][4]);
+
+		for(j=0; j<4; j++) /*every row*/
+		{
+			printf("row=%d\n",j);
+
+			if(j==0)
+			{
+		printf("############## a[4][4]=%d\n", a[4][4]);
+				for(k=0;k<2*(i-1);k++)
+				{
+					a[x++][y]=v++;
+					printf("a[%d][%d]=%d\n",x-1,y,v-1);
+					if(k==2*(i-1)-1)
+					{
+						y--;
+						x--;
+					}
+				}
+			}
+			if(j==1)
+			{
+		printf("############## a[4][4]=%d\n", a[4][4]);
+				for(k=0;k<2*(i-1);k++)
+				{
+					a[x][y--]=v++;
+					printf("a[%d][%d]=%d! a[][]=%d\n",x,y+1,v-1,a[x][y+1]);
+					if(k==2*(i-1)-1)
+					{
+						y++;
+						x--;
+					}
+				}
+			
+			}
+			if(j==2)
+			{
+		printf("############## a[4][0]=%d\n", a[4][0]);
+		printf("############## a[4][1]=%d\n", a[4][1]);
+		printf("############## a[4][2]=%d\n", a[4][2]);
+		printf("############## a[4][3]=%d\n", a[4][3]);
+		printf("############## a[4][4]=%d\n", a[4][4]);
+				for(k=0;k<2*(i-1);k++)
+				{
+					a[x--][y]=v++;
+					printf("a[%d][%d]=%d\n",x+1,y,v-1);
+					if(k==2*(i-1)-1)
+					{
+						y++;
+						x++;
+					}
+				}
+			
+			}
+			if(j==3)
+			{
+		printf("############## a[4][0]=%d\n", a[4][0]);
+		printf("############## a[4][1]=%d\n", a[4][1]);
+		printf("############## a[4][2]=%d\n", a[4][2]);
+		printf("############## a[4][3]=%d\n", a[4][3]);
+		printf("############## a[4][4]=%d\n", a[4][4]);
+				for(k=0;k<2*(i-1);k++)
+				{
+					a[x][y++]=v++;
+					printf("a[%d][%d]=%d\n",x,y-1,v-1);
+				//	if(k==2*(i-1)-1)
+				}
+			}
+		}
+		printf("############## a[4][4]=%d\n", a[4][4]);
+
+	}
+
+	for(i=0; i<size; i++)
+	{
+		for(j=0; j< size; j++)
+		{
+			printf("\n%d %d\n", i,j);
+			printf("%d ", a[i][j]);
+		}	
+			/*
+			if(j!=size-1)
+				printf("%d*", a[i][j]);
+			else
+				printf("%d\n", a[i][j]);
+*/
+	}
+	return (char *)a;
+}
+
+
+int main()
+{
+	char * p;
+	int i,j,num;
+	num=5;
+	p=clockwise(num);
+
+
+	/*
+	for(i=0; i<num; i++)
+	{
+		for(j=0; j< num; j++)
+			printf("%d*", *(*((char **)p+i)+j));
+		printf("\n");
+
+	}
+*/
+
+	return 0;
+}

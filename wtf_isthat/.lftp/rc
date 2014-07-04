@@ -1,0 +1,30 @@
+debug 3
+
+set ftp:charset GBK
+set ftp:passive-mode on
+set ftp:list-options -a
+set ftp:use-abor false
+
+
+set ftp:sync-mode off
+set ftp:auto-sync-mode "Serv-U FTP Server"
+set ftp:sync-mode/ftp.microsoft.com on
+
+set net:connection-limit/music.ustc.edu.cn 1
+set net:connection-limit/202.38.72.133     1
+
+set cmd:set-term-status on
+set cmd:term-status/*screen* ""
+#"\e_SCREEN:\T\e\\"
+
+alias .. cd ..
+alias ... cd ...
+alias .... cd ....
+
+alias mirror mirror --continue --no-perms --no-umask
+set mirror:order *.txt *.sub *.srt *.idx *.nfo *.jpg *.rar *.avi *.rm *.rmvb
+
+
+(! test `whoami` = root ) || set prompt "\e[1;30m[\e[0;36mf\e[1;34mt\e[37mp\e[30m] \e[34m\u\e[0;34m\@\e[1m\h\e[1;30m:\e[1;34m\w\e[1;30m>\e[0m "
+(! test `whoami` = root ) && set prompt "\e[1;30m[\e[0;32mf\e[1;31mt\e[37mp\e[30m] \e[34m\u\e[0;34m\@\e[1m\h\e[1;30m:\e[1;34m\w\e[1;30m>\e[0m "
+

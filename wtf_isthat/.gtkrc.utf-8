@@ -1,0 +1,16 @@
+# $(gtkconfigdir)/gtkrc.zh_CN
+#
+# This file defines the fontsets for Chinese language (zh) using
+# the simplified chinese standard GuoBiao as in mainland China (CN)
+#
+# 1999, Pablo Saratxaga <pablo@mandrakesoft.com>
+#
+
+#include "/home/xcf/.Geramik/share/themes/Geramik/gtk/gtkrc"
+#include "/usr/share/themes/Nuvola/gtk-1.0/gtkrc"
+
+style "gtk-default-zh-cn" {
+       fontset = "fixed,-misc-simsun-medium-r-normal--16-*-*-*-c-*-iso10646-1,*-r-*"
+}
+class "GtkWidget" style "gtk-default-zh-cn"
+

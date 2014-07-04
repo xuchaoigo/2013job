@@ -1,0 +1,190 @@
+[ /profile/default/ethernet_5282cdf75d47_cable ]
+    IPv6.Configuration = { Method=off }
+    AutoConnect = false
+    Proxy.Configuration = { }
+    Name = Wired
+    Nameservers = [ 192.168.1.1 ]
+    Provider = { }
+    Favorite = true
+    Domains.Configuration = [ ]
+    State = ready
+    Proxy = { Method=direct }
+    Nameservers.Configuration = [ ]
+    LoginRequired = true
+    IPv6 = { }
+    Domains = [ ]
+    Ethernet = { Interface=eth0 MTU=1500 Method=auto Address=52:82:CD:F7:5D:47 }
+    Security = [ ]
+    IPv4.Configuration = { Method=dhcp }
+    Type = ethernet
+    Immutable = false
+    IPv4 = { Netmask=255.255.255.0 Gateway=192.168.1.1 Method=dhcp Address=192.168.1.152 }
+
+[ /profile/default/wifi_00e04c384d06_54502d4c494e4b5f383646303043_managed_wep ]
+    Strength = 100
+    Nameservers = [ ]
+    PassphraseRequired = false
+    State = idle
+    LoginRequired = false
+    Provider = { }
+    Type = wifi
+    Security = [ wep ]
+    AutoConnect = true
+    Immutable = false
+    Proxy = { }
+    IPv4.Configuration = { Method=dhcp }
+    IPv6.Configuration = { Method=off }
+    Name = TP-LINK_86F00C
+    Favorite = true
+    Domains = [ ]
+    Ethernet = { Interface=wlan0 Method=auto Address=00:E0:4C:38:4D:06 }
+    Nameservers.Configuration = [ ]
+    Proxy.Configuration = { }
+    Domains.Configuration = [ ]
+    IPv4 = { }
+    Passphrase = dspdspdspdspd
+    IPv6 = { }
+
+[ /profile/default/wifi_00e04c384d06_4453502043656e747265_managed_wep ]
+    Strength = 100
+    Nameservers = [ ]
+    PassphraseRequired = true
+    State = idle
+    LoginRequired = false
+    Provider = { }
+    Type = wifi
+    Security = [ wep ]
+    AutoConnect = false
+    Immutable = false
+    Proxy = { }
+    IPv4.Configuration = { Method=dhcp }
+    IPv6.Configuration = { Method=off }
+    Name = DSP Centre
+    Favorite = false
+    Domains = [ ]
+    Ethernet = { Interface=wlan0 Method=auto Address=00:E0:4C:38:4D:06 }
+    Nameservers.Configuration = [ ]
+    Proxy.Configuration = { }
+    Domains.Configuration = [ ]
+    IPv4 = { }
+    IPv6 = { }
+
+[ /profile/default/wifi_00e04c384d06_54502d4c494e4b5f445350_managed_wep ]
+    Strength = 100
+    Nameservers = [ ]
+    PassphraseRequired = true
+    State = idle
+    LoginRequired = false
+    Provider = { }
+    Type = wifi
+    Security = [ wep ]
+    AutoConnect = false
+    Immutable = false
+    Proxy = { }
+    IPv4.Configuration = { Method=dhcp }
+    IPv6.Configuration = { Method=off }
+    Name = TP-LINK_DSP
+    Favorite = false
+    Domains = [ ]
+    Ethernet = { Interface=wlan0 Method=auto Address=00:E0:4C:38:4D:06 }
+    Nameservers.Configuration = [ ]
+    Proxy.Configuration = { }
+    Domains.Configuration = [ ]
+    IPv4 = { }
+    IPv6 = { }
+
+[ /profile/default/wifi_00e04c384d06_54502d4c494e4b5f363530363934_managed_psk ]
+    Strength = 100
+    Nameservers = [ ]
+    PassphraseRequired = true
+    State = idle
+    LoginRequired = false
+    Provider = { }
+    Type = wifi
+    Security = [ psk ]
+    AutoConnect = false
+    Immutable = false
+    Proxy = { }
+    IPv4.Configuration = { Method=dhcp }
+    IPv6.Configuration = { Method=off }
+    Name = TP-LINK_650694
+    Favorite = false
+    Domains = [ ]
+    Ethernet = { Interface=wlan0 Method=auto Address=00:E0:4C:38:4D:06 }
+    Nameservers.Configuration = [ ]
+    Proxy.Configuration = { }
+    Domains.Configuration = [ ]
+    IPv4 = { }
+    IPv6 = { }
+
+[ /profile/default/wifi_00e04c384d06_4453505f595059_managed_psk ]
+    Strength = 100
+    Nameservers = [ ]
+    PassphraseRequired = true
+    State = idle
+    LoginRequired = false
+    Provider = { }
+    Type = wifi
+    Security = [ psk ]
+    AutoConnect = false
+    Immutable = false
+    Proxy = { }
+    IPv4.Configuration = { Method=dhcp }
+    IPv6.Configuration = { Method=off }
+    Name = DSP_YPY
+    Favorite = false
+    Domains = [ ]
+    Ethernet = { Interface=wlan0 Method=auto Address=00:E0:4C:38:4D:06 }
+    Nameservers.Configuration = [ ]
+    Proxy.Configuration = { }
+    Domains.Configuration = [ ]
+    IPv4 = { }
+    IPv6 = { }
+
+[ /profile/default/wifi_00e04c384d06_7468696e6b6974_managed_psk ]
+    Strength = 100
+    Nameservers = [ ]
+    PassphraseRequired = true
+    State = idle
+    LoginRequired = false
+    Provider = { }
+    Type = wifi
+    Security = [ psk ]
+    AutoConnect = false
+    Immutable = false
+    Proxy = { }
+    IPv4.Configuration = { Method=dhcp }
+    IPv6.Configuration = { Method=off }
+    Name = thinkit
+    Favorite = false
+    Domains = [ ]
+    Ethernet = { Interface=wlan0 Method=auto Address=00:E0:4C:38:4D:06 }
+    Nameservers.Configuration = [ ]
+    Proxy.Configuration = { }
+    Domains.Configuration = [ ]
+    IPv4 = { }
+    IPv6 = { }
+
+[ /profile/default/wifi_00e04c384d06_74702d6c696e6b64656d6f_managed_psk ]
+    Strength = 100
+    Nameservers = [ ]
+    PassphraseRequired = true
+    State = idle
+    LoginRequired = false
+    Provider = { }
+    Type = wifi
+    Security = [ psk ]
+    AutoConnect = false
+    Immutable = false
+    Proxy = { }
+    IPv4.Configuration = { Method=dhcp }
+    IPv6.Configuration = { Method=off }
+    Name = tp-linkdemo
+    Favorite = false
+    Domains = [ ]
+    Ethernet = { Interface=wlan0 Method=auto Address=00:E0:4C:38:4D:06 }
+    Nameservers.Configuration = [ ]
+    Proxy.Configuration = { }
+    Domains.Configuration = [ ]
+    IPv4 = { }
+    IPv6 = { }

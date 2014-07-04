@@ -1,0 +1,224 @@
+! related command: editres
+
+! xwindow {{{1
+*StringConversionWarnings: on
+
+!Xcursor.size: 24
+!Xcursor.theme: redglass
+
+! Solving the Linux DPI Puzzle <http://scanline.ca/dpi/>
+Xft.dpi: 96
+
+! xfig {{{1
+Fig.latexfonts:		true
+Fig.specialtext:	true
+Fig.startlatexFont:	default
+
+! xdvi {{{1
+xdvi.background:	white
+xdvi.foreground:	black
+xdvi.cursorColor:	red
+xdvi.expert:		true
+! xdvi*geometry:		1280x1010+0+0
+xdvi.keepPosition:	false
+xdvi.sideMargin:	3cm
+xdvi.topMargin:		1cm
+xdvi.shrinkFactor:	4
+
+! xpdf {{{1
+Xpdf*.fontList:		-misc-fixed-medium-r-normal--15-*-*-*-c-*-iso8859-1;\
+			-*-simsun-medium-r-normal--14-0-0-0-*-0-iso10646-*
+! Xpdf*geometry:		1280x1000+0+0
+xpdf.initialZoom:	width
+
+!xpdf*FontList:		-*-verdana-bold-r-normal--12-*-*-*-*-*-iso8859-1;-*-simsun-medium-r-normal--12-0-0-0-*-0-gbk-*:
+!xpdf*Foreground:	white
+!xpdf*Background:	black
+
+! rxvt-unicode {{{1
+! rxvt-unicode options {{{2
+!URxvt.geometry:	127x56+64+8
+! URxvt.geometry:		121x53+1+1
+URxvt.linespace:	0
+
+!URxvt.insecure:	True
+URxvt.inputMethod:	scim
+URxvt.imLocale:		zh_CN.GBK
+URxvt.preeditType:	OverTheSpot,Root,None
+URxvt.imFont:		fixed
+
+URxvt.visualBell:	True
+URxvt.cutchars:		' 	!+#$%^`"''&()*,;:<=>?[]{|}'
+URxvt.print-pipe:	cat >/tmp/urxvt-screendump
+
+! rxvt-unicode fonts {{{2
+URxvt.font: \
+			xft:Courier\ 10\ Pitch:pixelsize=16,\
+			xft:SimSun:antialias=false:pixelsize=16,\
+			xft:Simsun\ (Founder\ Extended):pixelsize=16
+!			xft:Arial\ Unicode\ MS:pixelsize=16,\
+!			xft:Microsoft\ Himalaya:pixelsize=16,\
+!			xft:Microsoft\ Uighur:pixelsize=16,\
+!			xft:Bitstream Vera Sans Mono:pixelsize=16,\
+
+URxvt.boldFont: \
+			xft:Bitstream\ Vera\ Sans\ Mono:style=Bold:pixelsize=16,\
+			xft:FZCuSong\\-B09:pixelsize=16,\
+			xft:Arial\ Unicode\ MS:pixelsize=16,\
+			xft:Simsun\ (Founder\ Extended):pixelsize=16
+!			xft:Microsoft\ YaHei:style=Bold:pixelsize=16,\
+!			xft:Microsoft\ JhengHei:style=Bold:pixelsize=16,\
+!			xft:Courier 10 Pitch:style=Bold:pixelsize=16,\
+!			xft:Comic Sans MS:pixelsize=16,\
+!			xft:FZCuYuan\-M03:pixelsize=16,\
+!			xft:FZHuPo\-M04:pixelsize=16,\
+!			xft:FZDaBiaoSong\-B06:pixelsize=16,\
+!			xft:FZXiaoBiaoSong\-B05:pixelsize=16,\
+!			xft:FZCuQian\-M17:pixelsize=16,\
+!			xft:FZPangWa\-M18:pixelsize=16,\
+!			xft:SimHei:pixelsize=16
+
+URxvt.italicFont: \
+			xft:Bitstream\ Vera\ Sans\ Mono:italic:pixelsize=16,\
+			xft:FZXingKai\\-S04:italic,\
+			xft:FZSongHei\\-B07:italic,\
+			xft:Simsun\ (Founder\ Extended):italic
+!			terminus-20, \
+!			xft:Minion\ Pro:bold:italic:pixelsize=16,\
+!			xft:Courier New:italic:pixelsize=16,\
+!			xft:Courier 10 Pitch:style=Oblique,\
+!			xft:SimSun:italic
+
+URxvt.boldItalicFont:  \
+			xft:Comic\ Sans\ MS:bold:italic:pixelsize=16,\
+			xft:FZSongHei\\-B07:bold:italic,\
+			xft:Arial\ Unicode\ MS:bold:italic,\
+			xft:FZChaoCuHei\\-M10:bold:italic,\
+			xft:FZCuYuan\\-M03:bold:italic,\
+			xft:FZHuPo\\-M04:bold:italic,\
+			xft:Simsun\ (Founder\ Extended):italic
+!			xft:Myriad\ Pro:bold:italic:pixelsize=16,\
+!			terminus-bold-20, \
+!			xft:SimHei:italic
+
+! rxvt-unicode colors {{{2
+URxvt.secondaryScreen:	True
+URxvt.secondaryScroll:	False
+
+Rxvt*scrollBar:		False
+Rxvt*scrollTtyKeypress:	False
+Rxvt*saveLines:		10000
+
+URxvt.inheritPixmap:	False
+!URxvt.shading:		10
+!URxvt.tintColor:	blue
+
+URxvt.underlineColor:	#019347
+URxvt.pointerColor:	#dc74d1
+URxvt.pointerColor2:	#aaccaa
+
+Rxvt*background:	gray10
+Rxvt*foreground:	gray90
+
+Rxvt*cursorColor2:	#e0e0e0
+Rxvt*cursorColor:	#00a0f0
+
+Rxvt*colorIT:		gold
+
+! man pages
+Rxvt*colorUL:		orange
+Rxvt*colorBD:		white
+
+! less/screen: statusbar
+Rxvt*colorRV:		plum1
+!Rxvt*highlightColor:	plum1
+
+! vim: comment
+! bbs/mutt: statusbar
+Rxvt*color4:		dodger blue
+
+! ls: dir
+Rxvt*color12:		#3388FF
+
+! the defaults
+!Rxvt*color0:		black
+!Rxvt*color1:		red3
+!Rxvt*color2:		green3
+!Rxvt*color3:		yellow3
+!Rxvt*color4:		DodgerBlue1
+!Rxvt*color5:		magenta3
+!Rxvt*color6:		cyan3
+!Rxvt*color7:		gray90
+!Rxvt*color8:		gray50
+!Rxvt*color9:		red
+!Rxvt*color10:		green
+!Rxvt*color11:		yellow
+!Rxvt*color12:		SteelBlue1
+!Rxvt*color13:		magenta
+!Rxvt*color14:		cyan
+!Rxvt*color15:		white
+
+! from vim manual, seems to resemble the console colors
+!Rxvt*color0:                   #000000
+!Rxvt*color1:                   #c00000
+!Rxvt*color2:                   #008000
+!Rxvt*color3:                   #808000
+!Rxvt*color4:                   #0000c0 
+!Rxvt*color5:                   #c000c0
+!Rxvt*color6:                   #008080
+!Rxvt*color7:                   #c0c0c0
+!Rxvt*color8:                   #808080
+!Rxvt*color9:                   #ff6060
+!Rxvt*color10:                  #00ff00
+!Rxvt*color11:                  #ffff00
+!Rxvt*color12:                  #8080ff
+!Rxvt*color13:                  #ff40ff
+!Rxvt*color14:                  #00ffff
+!Rxvt*color15:                  #ffffff
+
+! rxvt-unicode perl extensions {{{2
+URxvt.perl-ext-common:	default,selection-autotransform,mark-urls
+
+! URxvt.selecton.pattern-0:	[a-z]+@[a-z.]+
+
+! transform selections of the form "filename:number", often seen in compiler
+! messages, into "vi +$filename $word"
+URxvt.selection-autotransform.0:	s/^([^:[:space:]]+):(\\d+): (warning|error): .*$/vi +$2 \\Q$1\\E\\x0d/
+URxvt.selection-autotransform.1:	s/(\\S+)\\.rej$/wiggle --replace $1 $1.rej\\x0d/
+
+URxvt.urlLauncher:              /usr/bin/firefox
+
+! rxvt-unicode keysyms {{{2
+URxvt.keysym.Home:              \033[1~
+URxvt.keysym.End:               \033[4~
+URxvt.keysym.F12:               ftp:\/\/202.38.73.198
+URxvt.keysym.C-Tab:             \033<C-Tab>
+URxvt.keysym.C-apostrophe:      \033<C-'>
+URxvt.keysym.C-slash:           \033<C-/>
+URxvt.keysym.C-semicolon:       \033<C-;>
+URxvt.keysym.C-grave:           \033<C-`>
+URxvt.keysym.C-comma:           \033<C-\054>
+URxvt.keysym.C-Return:          \033<C-Return>
+URxvt.keysym.S-Return:          \033<S-Return>
+URxvt.keysym.S-space:           \033<S-Space>
+URxvt.keysym.C-period:          \033<C-.>
+URxvt.keysym.C-`:               \033<C-`>
+URxvt.keysym.M-Up:              \033<M-Up>
+URxvt.keysym.M-Down:            \033<M-Down>
+URxvt.keysym.M-Left:            \033<M-Left>
+URxvt.keysym.M-Right:           \033<M-Right>
+URxvt.keysym.C-0:               list.\033<C-.0123456789.>
+!URxvt.keysym.M-C-0:             list.\033<M-C-.0123456789.>
+!URxvt*keysym.M-C-a:             list.\033<M-C-.abcdefghijklmnopqrstuvwxyz.>
+
+!URxvt.keysym.0xFF50:           \033OH
+!URxvt.keysym.0xFF57:           \033OE
+!URxvt.keysym.F12:               proto:\033]701;zh_CN.GBK\007
+!URxvt.keysym.S-Home:            \033]701;zh_CN.GBK\007
+
+!S-TAB (not work)
+!URxvt.keysym.0xFE20:      \033[Z
+
+!}}}2
+
+! vim:set nowrap foldmethod=marker:

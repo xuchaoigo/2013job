@@ -1,0 +1,354 @@
+## http://www.onerussian.com/Linux/.files/mutt/mutt.color.body
+
+## ========================================================================
+## File:          $HOME/.mutt.color.body
+## Purpose:       Setup file for the Mail program "Mutt".
+##                Colorization of text for the builtin pager.
+## Latest change: Thu Dec 05 21:30:00 MET 2002
+## ========================================================================
+## Author:      Sven Guckes guckes-mutt-color-body@math.fu-berlin.de
+## Availability: This file is available as
+## <URL:http://www.math.fu-berlin.de/~guckes/mutt/mutt.color.body>
+## Comments are very very welcome - please send an email!
+## Size:        ca 25K
+## ========================================================================
+
+## =============================================================
+## General remarks
+## =============================================================
+# Words consist in a sequence of letters.
+# While it is still easy for human beings
+# to understand words with interspersed spaces
+# it is not easy for a program to do that.
+# Example:   R E A L L Y  I M P O R T A N T
+# Creating regular expressions which also
+# allow for this kind of "spacing" is not easy.
+# Instead, please indicate emphasis not by
+# chenging the definition of a word but by
+# placing it into asterisks, eg "*important*".
+#
+# Recognition of hyphenated words is difficult, too.
+# So please do not break words across lines at all.
+# Instead, put them on the next line.
+# The same holds for combined words or terms, eg
+# dates like "4th of July".
+
+# I'll need this macro when I do some testing -
+# jsut a simple way to reload this setup file:
+macro index %  ":source ~/.mutt/mutt.color.body"
+
+## =============================================================
+## COLOR for the BODY         (viewed with *internal* pager)
+## =============================================================
+
+## From the manual to mutt-1.2:
+##      Objects that you can colorize:
+##      attachment, body (regexpr), bold, error, header, hdrdefault,
+##      index, indicator, markers, message, normal,
+##      quoted, quoted1, ..., quotedN,
+##      search, signature, status, tilde, tree, underline.
+##
+## Color names you can use for "background" and "foreground":
+##      white black green magenta blue cyan yellow red default colorx
+##
+## NOTE:  Although I'd like to use "default" as the background color,
+##        it somehow does not work out with "xterm".
+##        So I changed it to "black" everywhere.
+
+## ==================================================
+## COLOR for the BODY  - special text parts
+## ==================================================
+
+#  Show  attachments:
+   color attachment  green  default
+
+#        Quoted text - coloring only the first four levels:
+#  color quoted      cyan   default  # pager body
+   color quoted      cyan   default  # pager body
+   color quoted1     red    default  # pager body
+   color quoted2     cyan   default  # pager body
+   color quoted3     yellow default  # pager body
+
+#  The   Signature:
+   color signature   red    default  # pager body
+   color tilde       blue   default  # pager body
+
+#  Bold and unerlined text:
+   color bold        green  default   # ..
+   color underline   yellow default   #
+#  How this works:  Mutt recognizes sequences with embedded CTRL-H ('^H').
+#  If this matches one of the following kinds
+#  then you get to see the text as either "bold text" or "underlined text"
+#  depending on the capabilities of your terminal.
+#  bold:       "c^Hc" -> "bold 'c'"
+#  underline:  "c^H_" -> "underlined 'c'"
+#  On color terminals you will see them with their own color.
+
+## ==================================================
+## COLOR for the BODY  - special text parts
+## ==================================================
+
+   color normal       white  default
+   color tilde        blue   default
+
+## ==================================================
+## COLOR for the BODY  - Internet Addresses
+## ==================================================
+
+#  URLs (General Internet addresses):
+   color body cyan default "(finger|ftp|http|https|news|telnet)://[^ >]*"
+   color body cyan default "<URL:[^ ]*>"
+#
+# web address without "http":
+#  color body cyan default "www\\.[:alphanum:]+\\.[a-z][a-z][a-z]?([/a-z0-9.]+)?"
+   color body cyan default "www\\.[-.a-z0-9]+\\.[a-z][a-z][a-z]?([-_./~a-z0-9]+)?"
+#  this one yields false positives on addresses
+#  with a minus sign in the name, eg
+#  www.fu-berlin.de/foo/bar.html
+#        ^
+#  weird.
+
+#  HTTP addresses:
+   color body green default \
+   "[[:alnum:]][-+.#_[:alnum:]]*@[-+.[:alnum:]]*[[:alnum:]]"
+
+#  Mailto links with a optional subject line:
+#  Example: mailto:guckes@gmx.net?subject=mutt
+   color body brightred   default \
+   "mailto: *[^ ]+\(\\?subject=[^ ]+\)?"
+
+## ===========================================================
+## COLOR for the BODY  - Directories, Filenames, and Variables
+## ===========================================================
+
+#  File names ("/path/file")
+   color body brightcyan default "\\~?\(/[-_.,a-zA-Z0-9{}]+\)+"
+#  Example:  /usr/src/linux/include/{asm,linux}
+
+#  DOS/Windows file names
+#  c:\vim\vim60e\runtime\syntax\vim.vim
+   # color body brightgreen default "[a-zA-Z]:[-_.a-zA-Z0-9\\]+"
+#
+#  lower case letters should suffice:
+#  color body brightgreen default "[a-z]:[-_.a-z0-9\\]+"
+#  but it's better when there is a minumum length:
+   # color body brightgreen default "[a-z]:[-_.a-z0-9\\]{3,}"
+#
+#  spaces are *not* included here, of course.
+#  who puts spaces into his filenames, anyway?  bah!
+
+#  Path names ("/path/")
+   color body brightblue   default "\(/[-_.a-zA-Z0-9]+\)+/"
+
+#  Variables  ("$HOME")
+   color body brightblue default "\\$[a-zA-Z][-_a-zA-Z]+"
+
+#  Program variables  ("timeout_fn")
+   color body brightwhite default "[a-zA-Z0-9]*_[_a-zA-Z0-9]+"
+
+#  Program functions  ("timeout_fn()")
+   color body brightgreen default "[_a-zA-Z0-9]+\\(\\)"
+
+## ===========================================================
+## COLOR for the BODY  - Miscellaneous
+## ===========================================================
+
+#  Attribution line:
+   # color body red           default    "^[*] .*:$"
+#
+# my attribution line starts with '*' and ends with ':'
+# thus making it easier to recognize - eg for coloring.
+#
+# Example:
+#  * Joe Doe <joe.doe@company.com> [000907 18:00]:
+#  > quoted text
+#  > quoted text
+#  > quoted text
+#
+#  See also:
+#  The Attribution line FAQ:
+#  http://www.math.fu-berlin.de/~guckes/faq/attribution.html
+
+## ===========================================================
+#  Acronyms, Abbreviations, and "SCREAMING IN CAPS"
+## ===========================================================
+#  color body brightyellow  default    "[A-Z]+\([ ,]*[A-Z]+\)+"
+#  color body brightyellow  default    "[A-Z]{3,}"
+#  color body brightyellow  default    "\([A-Z]{3,} *\)+"
+#  color body brightyellow  default    "\([-A-Z']{2,}[ ,]*\)+"
+#
+#  The spaces at start and end are used for use with
+#  "-USE_GNU_REGEX":
+#  WARNING!  The following RegEx crashes mutt-1.2.x!
+#  color body brightyellow  default    " \([-A-Z']{2,}[ ,]*\)+ "
+#  color body brightyellow  default    " ([-A-Z]{2,}[ ,]*)+ "
+#
+#
+#  "+USE_GNU_REGEX":
+#  When you use "+USE_GNU_REGEX" then you can also make use
+#  of "start of word" ("\<") and "end of word" ("\>"):
+   # color body brightyellow  default    "\\<[-A-Z']{3,}\\>"
+#  with just "two or more" leads to *many* false positives,
+#  eg "AM" and "PM" in times and words like "A", "I", and
+#  AC AD AM AM AN AS AS AT AX BE BY DC DO GO HE HI IF
+#  IS IT ME MR MY NO OF ON OR OX PM RE TO TV UP US WE
+#
+## ===========================================================
+
+#  Alternatives ("either/or"):
+#  color body brightwhite    default   "\\w+/\\w+"
+#  color body brightwhite    default   "[-._a-zA-Z0-9]+/[-._a-zA-Z0-9]+"
+#  color body brightwhite    default   "([-._a-zA-Z0-9]+/)+[-._a-zA-Z0-9]+"
+#
+#  this is much easier when you can use word boundaries:
+#  color body brightwhite    default   "\\<\\w+/\\w+\\>"
+#  allow a space before and after the '/':
+#  color body brightwhite    default   "\\<\\w+ ?/ ?\\w+\\>"
+#  color body brightwhite    default   "\\<[-\\w]+ ?/ ?[-\\w]+\\>"
+#
+#  Cathing multiple alternatives:
+#  A/B/C/D
+#  color body brightwhite    default   "(\\<\\w+ ?/)+ ?\\w+\\>"
+#  this is fine - but fails on words containing dashes.
+#  however, building a character set with '-' and '\w'
+#  is not possiblem it seems:
+#  color body brightwhite    default   "(\\<[-\\w]+ ?/)+ ?[-\\w]+\\>"
+#
+#  so all you can do is list the characters again:
+   color body brightwhite    default   "(\\<[-a-z0-9._]+ ?/)+ ?[-a-z0-9._]+\\>"
+#  example:  foobar.123/foo-123.bar/foo.bar_123
+#
+#  non-matches:  A/B/C/...
+
+#  *Emphasized*, /emphasized/, and _emphasized_ words:
+#  color body brightred      default   "[*/_]+ *[- &[:alnum:]]+ *[*/_]+"
+#  this would catch false positives of the kind _foo* and /bar_
+#  so we should choose matching pairs only:
+   color body brightred      default   "[*][-[:alnum:]]+[*]"
+   color body brightred      default     "/[-[:alnum:]]+/"
+   color body brightred      default     "_[-[:alnum:]]+_"
+
+#  Smileys:  :-)  ;-)  :-|  :-/  :-(
+   # color body        yellow default    "[;:]-[)/(|]"
+
+######################################################################################
+# Colorize smileys:  :-)  ;-)  :-/  :-(                                              #
+######################################################################################
+# color body  black default "[;:]-[)/(|]"
+# color body  red default  "[;:][)/(|]"
+# color body  brightyellow default "[[:alpha:]]\+://[^ ]*"
+   
+# 020410: Year Numbers 1980-2002
+   # color body yellow default "19[89][0-9]"
+   # color body yellow default "200[0-8]"
+
+#  ISBNs
+#  color body red white "[-0-9]{9,12}[0-9X]"
+
+#  RTFM!
+#  " man word"
+#  color body red white '\\"man [^ ]+\\"'
+#  color body red white "^ +[$]? *man [^ ]+"
+   # color body red white "^ +[$]? *man \\w+"
+
+#  Lists
+#  bulleted list:
+#  * one
+#  * two
+#  * three
+#  dashed list:
+#  - one
+#  - two
+#  - three
+#  color body red          default "^ *[-*] +"
+# this pattern yields many false positives as it
+# spans lines for which there is no syntax language.
+# this is easier with Vim's syntax coloring.
+#
+   color body red          default "^\s*[-*] +"
+   color body red          default "^\s*[0-9]) +"
+
+#  special IP Host Adresses:
+#  192.x.x.x
+   color body white        blue  "192.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}"
+
+# 020405:
+# mutt has trouble with this iconv stuff and
+# gives me lots of characters in octal code - "\nnn"
+#  color body red          white "\\\\[0-7][0-7][0-7]"
+# however, this coloring does not work.
+# mutt obviously does not subject these characters
+# a color coding check but simply spews them out.
+
+# 020413:
+# HTML tags
+   # color body yellow       default "</?\w+>"
+
+# 020413
+# Quoted keyword:
+ color body brightyellow       default "\`[a-z0-9_]+'"
+ color body brightyellow       default '"\<\w[a-z0-9 ]+\w"\>'
+
+# 020414
+# Linux Distributions and their versions
+  color body brightred white \
+"(linux *)?(debian|mandrake|redhat|suse) *(linux)? *[0-9][.][0-9]"
+# other free OSs:
+  color body brightred white "(freebsd|netbsd|openbsd|solaris)"
+
+# Stucki's windoze patterns:
+# names of Windows[tm]
+# followed by some version
+# matches: windows-3.11 windoze-95
+# windoof-nt win2k "winzigweich xp"
+  color  body blue yellow \
+                  '\<windows[- ]?(3[.]11|95|98|9x|nt|2k|2000|me|xp)\>'
+# detecting "xp" as words only:
+  color body red default '\*?\<xp\>\*?'
+
+# Capitalized Words
+# color body default white '\<[A-Z]\w+\>'
+
+# Finding myself in Emails
+  color body  yellow blue  "(Wu Fengguang|Fengguang Wu)"
+  color body  yellow blue  "wfg@mail.ustc.edu.cn"
+
+# PGP strings:
+  color body default yellow "-----END PGP PUBLIC KEY BLOCK-----"
+  color body default yellow "-----BEGIN PGP PUBLIC KEY BLOCK-----"
+  color body default yellow "Version: GnuPG v1.0.[67] \(GNU/Linux\)"
+# color body default yellow "Version: GnuPG v1.2.[67] \(GNU/Linux\)"
+color body brightblack cyan "^gpg: Signature made.*"
+color body brightblack green "^gpg: Good signature from.*"
+color body brightblack yellow "^gpg: Can't check signature.*"
+color body brightblack yellow "^gpg: WARNING: .*"
+color body brightwhite red "^gpg: BAD signature from.*"
+
+# 2002-09-20
+# quoted-printable characters: =HH where 'H' is a hex digit
+  color body yellow blue  "=[0-9A-F][0-9A-F]"
+# colon at the end of a line (this preserves a line ending):
+  color body yellow blue  "=$"
+
+## ========================================================================
+## diff -u patches
+## ========================================================================
+  color body brightyellow default  "^@@ -.*$"
+  color body brightcyan   default  "^\\+.*$"
+  color body brightred    default  "^-.*$"
+  color body brightblue  default  "^--- .*$"
+  color body brightblue  default  "^\\+\\+\\+ .*$"
+  color body cyan  default  "^Signed-off-by:"
+
+  # color body green    default  ".* wrote:$"
+## ========================================================================
+## TEST!
+## ========================================================================
+
+# example:
+# [ foo | bar | foo bar | foo-bar | baz ]
+  # color body brightyellow brightred  '\[ [-a-z ]+ (\| [-a-z ]+)+ \]'
+
+#EOF vim: ft=muttrc
+
+
