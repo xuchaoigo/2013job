@@ -1,7 +1,7 @@
 //the longest incremental seq
 
 #include <stdio.h>
-#include <iostream>
+#include <iostream.h>
 
 using namespace std;
 
@@ -47,7 +47,7 @@ int lis(int *a, int len)
 	return k-1;
 }
 
-int main()
+int emain()
 {
 	int a[10] = {3,1,5,9,4,7,8,9,3,6};
 	//int a[10] = {1,2,3,4,5,6,7,8,9,10};

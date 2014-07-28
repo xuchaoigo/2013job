@@ -1,6 +1,0 @@
-$vncStartup = "/$ENV{HOME}/.vncsession";
-$vncStartup = "/$ENV{HOME}/.xsession";
-$xauthorityFile = "$ENV{HOME}/.Xauthority";
-$geometry ="800x600";
-$geometry ="1024x768";
-#$geometry ="1152x864";

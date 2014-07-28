@@ -22,7 +22,7 @@ int lis(int *a, int len)
 	{
 		for(int j=0; j<i; j++)
 		{
-			if(b[j]<a[i]&& b[j]!=-1) //len==j, only update if the j len LIS exists
+			if(a[i]>b[j]&& b[j]!=-1) //len==j, only update if the j len LIS exists
 			{
 				if(a[i]<b[j+1] || b[j+1]==-1)//perhaps update the number of j+1 len
 					b[j+1]=a[i];

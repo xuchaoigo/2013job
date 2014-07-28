@@ -1,6 +1,0 @@
-xset fp+ /usr/share/fonts/vga,/usr/share/fonts/truetype/chinese,/usr/share/fonts/truetype/english
-#xset fp=/usr/share/fonts/vga,/usr/share/fonts/truetype/chinese,/usr/share/fonts/truetype/english,/usr/lib/X11/fonts/Type1,/usr/lib/X11/fonts/Speedo,/usr/lib/X11/fonts/misc,/usr/lib/X11/fonts/100dpi,/usr/lib/X11/fonts/75dpi
-xrdb -merge ~/.Xresources
-
-exec /usr/bin/mlterm --geometry=80x30
-exec /usr/bin/X11/xterm
